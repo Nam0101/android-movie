@@ -1,0 +1,4 @@
+additionalProperties:
+  artifactId: kotlin-petstore-client
+  serializableModel: "true"
+  dateLibrary: java8
