@@ -32,7 +32,7 @@ import com.squareup.moshi.JsonClass
 data class GenresDTO (
 
     @Json(name = "genres")
-    var genres: kotlin.String,
+    var genres: kotlin.String? = null,
 
     @Json(name = "id")
     var id: kotlin.Long? = null,

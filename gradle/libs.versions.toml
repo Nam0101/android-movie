@@ -1,11 +1,9 @@
 [versions]
 agp = "8.3.1"
-hiltAndroid = "2.38.1"
-hiltCompiler = "1.2.0"
-hiltLifecycleViewmodel = "1.0.0-alpha03"
+coil = "2.6.0"
+glide = "4.12.0"
+javaJwtVersion = "3.18.2"
 koinAndroid = "3.6.0-wasm-alpha2"
-koinAndroidVersion = "3.1.2"
-koinBom = "3.5.0"
 kotlin = "2.0.0-Beta5"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -14,8 +12,8 @@ espressoCore = "3.5.1"
 appcompat = "1.6.1"
 kotlinReflect = "2.0.0-Beta5"
 kotlintestRunnerJunit5 = "3.4.2"
-kotlinxCoroutinesCore = "1.7.1"
-kotlinxCoroutinesCoreVersion = "1.7.1"
+kotlinxCoroutinesCore = "1.7.3"
+kotlinxCoroutinesCoreVersion = "1.7.3"
 lifecycleViewmodelKtx = "2.7.0"
 loggingInterceptor = "4.10.0"
 material = "1.11.0"
@@ -23,33 +21,29 @@ activity = "1.8.2"
 constraintlayout = "2.1.4"
 moshiKotlin = "1.14.0"
 navigationFragmentKtx = "2.7.7"
-okhttp = "4.11.0"
+okhttp = "4.12.0"
 retrofit = "2.9.0"
 roomRuntime = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompiler" }
-androidx-hilt-lifecycle-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+auth0-java-jwt = { module = "com.auth0:java-jwt", version.ref = "javaJwtVersion" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
 converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "retrofit" }
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
-insert-koin-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroidVersion" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 koin-android-v360wasmalpha2 = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
-koin-androidx-viewmodel = { module = "io.insert-koin:koin-androidx-viewmodel", version.ref = "koinAndroidVersion" }
-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinBom" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlinReflect" }
 kotlintest-runner-junit5 = { module = "io.kotlintest:kotlintest-runner-junit5", version.ref = "kotlintestRunnerJunit5" }

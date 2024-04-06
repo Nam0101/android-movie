@@ -11,9 +11,10 @@ import retrofit2.CallAdapter
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import com.squareup.moshi.Moshi
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 
-class ApiClient(
+open class ApiClient(
     private var baseUrl: String = defaultBasePath,
     private val okHttpClientBuilder: OkHttpClient.Builder? = null,
     private val serializerBuilder: Moshi.Builder = Serializer.moshiBuilder,
@@ -50,6 +51,9 @@ class ApiClient(
     private val defaultClientBuilder: OkHttpClient.Builder by lazy {
         OkHttpClient()
             .newBuilder()
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(HttpLoggingInterceptor { message -> logger?.invoke(message) }
                 .apply { level = HttpLoggingInterceptor.Level.BODY }
             )

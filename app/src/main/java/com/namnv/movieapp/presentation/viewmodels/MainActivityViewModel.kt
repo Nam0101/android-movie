@@ -1,20 +1,22 @@
 package com.namnv.movieapp.presentation.viewmodels
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.auth0.jwt.JWT
+import com.auth0.jwt.exceptions.JWTDecodeException
+import com.auth0.jwt.interfaces.DecodedJWT
 import com.namnv.movieapp.data.JwtStore
 import com.namnv.movieapp.data.models.LoginVM
 import com.namnv.movieapp.domain.usecase.LoginUseCase
 import io.sentry.Sentry
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import java.util.Date
 
 class MainActivityViewModel(private val jwtStore: JwtStore) : ViewModel(), KoinComponent {
     private val TAG = MainActivityViewModel::class.java.simpleName
@@ -35,8 +37,22 @@ class MainActivityViewModel(private val jwtStore: JwtStore) : ViewModel(), KoinC
         jwt.value = jwtStore.getStoredJwt()
     }
 
+    fun isValidJwt(): Boolean {
+        if (jwt.value?.isEmpty() == true) {
+            Log.i(TAG, "JWT is empty")
+            return false
+        }
+        return try {
+            val decodedJWT: DecodedJWT = JWT.decode(jwt.value)
+            val expirationTime = decodedJWT.expiresAt
+            val currentTime = Date()
+            !currentTime.after(expirationTime)
+        } catch (exception: JWTDecodeException) {
+            false
+        }
+    }
 
-   fun login(){
+    fun login(){
     loginVM = LoginVM(username = userName.value!!, password = password.value!!)
     viewModelScope.launch(Dispatchers.IO) {
         val result = loginUseCase.execute(loginVM)
@@ -44,12 +60,14 @@ class MainActivityViewModel(private val jwtStore: JwtStore) : ViewModel(), KoinC
             jwt.value = result
             if (result.isNotEmpty()) {
                 loginStatus.value = true
-                jwt.value = jwtStore.getStoredJwt()
+                jwtStore.storeJwt(result)
+                Log.i(TAG, "Login + $result")
             } else {
-                loginError.value = "Login failed"
+                loginError.value = "Login failed, check your username and password"
                 Sentry.captureException(RuntimeException("Login failed"))
             }
         }
     }
-}
+
+   }
 }
