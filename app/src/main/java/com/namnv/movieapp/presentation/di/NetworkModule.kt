@@ -16,23 +16,28 @@ import com.namnv.movieapp.data.apis.UserResourceApi
 import com.namnv.movieapp.data.infrastructure.ApiClient
 import okhttp3.Interceptor
 import org.koin.dsl.module
-
 val networkModule = module {
     single {
-        ApiClient().setLogger { message ->
-            Log.i("ApiClient", message)
-        }.addAuthorization("jwt", Interceptor { chain ->
+        val apiClient = ApiClient().setLogger { message ->
+            Log.i("API", message)
+        }
+        apiClient.addInterceptor(Interceptor { chain ->
             val original = chain.request()
-            val jwt = get<JwtStore>().getStoredJwt()
-            val request = original.newBuilder()
-                .header("Authorization", "Bearer $jwt")
+            val requestBuilder = original.newBuilder()
                 .method(original.method, original.body)
-                .build()
-            Log.i("ApiClient", "Adding jwt to request")
-            Log.i("ApiClient", "Jwt: $jwt")
+
+            // Kiểm tra nếu URL không phải là URL đăng nhập
+            if (!original.url.encodedPath.contains("authenticate")) {
+                val jwt = get<JwtStore>().getStoredJwt()
+                requestBuilder.header("Authorization", "Bearer $jwt")
+                Log.i("ApiClient", "Adding jwt to request")
+                Log.i("ApiClient", "Jwt: $jwt")
+            }
+
+            val request = requestBuilder.build()
             return@Interceptor chain.proceed(request)
         })
-
+        apiClient // Return the apiClient instance
     }
     single { get<ApiClient>().createService(AuthenticateControllerApi::class.java) }
     single {get<ApiClient>().createService(MovieResourceApi::class.java)}
@@ -45,6 +50,4 @@ val networkModule = module {
     single {get<ApiClient>().createService(PaymentResourceApi::class.java)}
     single { get<ApiClient>().createService(PremiumResourceApi::class.java) }
     single { get<ApiClient>().createService(UserResourceApi::class.java) }
-
-
 }

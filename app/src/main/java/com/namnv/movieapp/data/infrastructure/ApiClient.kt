@@ -103,6 +103,10 @@ open class ApiClient(
         }
     }
 
+    fun addInterceptor(interceptor: Interceptor) {
+        clientBuilder.addInterceptor(interceptor)
+    }
+
     companion object {
         @JvmStatic
         protected val baseUrlKey = "com.namnv.movieapp.data.baseUrl"

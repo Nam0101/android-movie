@@ -1,16 +1,18 @@
 [versions]
-agp = "8.3.1"
+agp = "8.3.2"
 coil = "2.6.0"
 glide = "4.12.0"
 javaJwtVersion = "3.18.2"
+jiaozivideoplayer = "7.7.0"
+jiaozivideoplayerVersion = "7.7.0"
 koinAndroid = "3.6.0-wasm-alpha2"
-kotlin = "2.0.0-Beta5"
+kotlin = "2.0.0-RC1"
 coreKtx = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
-kotlinReflect = "2.0.0-Beta5"
+kotlinReflect = "2.0.0-RC1"
 kotlintestRunnerJunit5 = "3.4.2"
 kotlinxCoroutinesCore = "1.7.3"
 kotlinxCoroutinesCoreVersion = "1.7.3"
@@ -19,30 +21,36 @@ loggingInterceptor = "4.10.0"
 material = "1.11.0"
 activity = "1.8.2"
 constraintlayout = "2.1.4"
+media3Exoplayer = "1.3.1"
 moshiKotlin = "1.14.0"
 navigationFragmentKtx = "2.7.7"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
 roomRuntime = "2.6.1"
+viewbindingKtx = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3Exoplayer" }
+androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "media3Exoplayer" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3Exoplayer" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-viewbinding-ktx = { module = "androidx.viewbinding:viewbinding-ktx", version.ref = "viewbindingKtx" }
 auth0-java-jwt = { module = "com.auth0:java-jwt", version.ref = "javaJwtVersion" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
 converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "retrofit" }
-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+jzvd-jiaozivideoplayer = { module = "cn.jzvd:jiaozivideoplayer", version.ref = "jiaozivideoplayerVersion" }
 koin-android-v360wasmalpha2 = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlinReflect" }

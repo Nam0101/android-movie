@@ -48,34 +48,34 @@ import com.squareup.moshi.JsonClass
 data class MovieDTO (
 
     @Json(name = "name")
-    var name: kotlin.String,
+    var name: kotlin.String?,
 
     @Json(name = "originName")
-    var originName: kotlin.String,
+    var originName: kotlin.String?,
 
     @Json(name = "isCompleted")
-    var isCompleted: kotlin.Boolean,
+    var isCompleted: kotlin.Boolean?,
 
     @Json(name = "slug")
-    var slug: kotlin.String,
+    var slug: kotlin.String?,
 
     @Json(name = "episodeCurrent")
-    var episodeCurrent: kotlin.String,
+    var episodeCurrent: kotlin.String?,
 
     @Json(name = "episodeTotal")
-    var episodeTotal: kotlin.Int,
+    var episodeTotal: kotlin.Int?,
 
     @Json(name = "quality")
-    var quality: kotlin.String,
+    var quality: kotlin.String?,
 
     @Json(name = "year")
-    var year: kotlin.Int,
+    var year: kotlin.Int?,
 
     @Json(name = "isSingle")
-    var isSingle: kotlin.Boolean,
+    var isSingle: kotlin.Boolean?,
 
     @Json(name = "premiumOnly")
-    var premiumOnly: kotlin.Boolean,
+    var premiumOnly: kotlin.Boolean?,
 
     @Json(name = "id")
     var id: kotlin.Long? = null,

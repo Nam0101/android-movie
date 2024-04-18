@@ -48,6 +48,7 @@ class MainActivityViewModel(private val jwtStore: JwtStore) : ViewModel(), KoinC
             val currentTime = Date()
             !currentTime.after(expirationTime)
         } catch (exception: JWTDecodeException) {
+            jwtStore.storeJwt("")
             false
         }
     }

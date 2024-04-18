@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("com.google.devtools.ksp").version("2.0.0-Beta5-1.0.19")
+    id("com.google.devtools.ksp").version("2.0.0-RC1-1.0.20")
     id("io.sentry.android.gradle").version("4.4.0")
 
 }
@@ -38,6 +38,9 @@ android {
     }
     dataBinding{
         enable = true
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -80,9 +83,12 @@ dependencies {
     implementation(libs.auth0.java.jwt)
     implementation(libs.material)
     //glide
-    implementation(libs.glide)
     ksp(libs.compiler)
     implementation(libs.coil)
+    // view binding
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.exoplayer.dash)
+    implementation(libs.androidx.media3.ui)
     //sentry
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
